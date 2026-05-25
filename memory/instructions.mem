@@ -1,0 +1,52 @@
+00500093 // I-Type: ADDI x1, x0, 5     (x1 = 5)
+00A00113 // I-Type: ADDI x2, x0, 10    (x2 = 10)
+00F00193 // I-Type: ADDI x3, x0, 15    (x3 = 15)
+0FF00213 // I-Type: ADDI x4, x0, 255   (x4 = 255)
+
+00208333 // R-Type: ADD  x6, x1, x2    (x6 = 5 + 10 = 15)
+401183B3 // R-Type: SUB  x7, x3, x1    (x7 = 15 - 5 = 10)
+00009433 // R-Type: AND  x8, x1, x0    (x8 = 5 & 0 = 0)
+0030A4B3 // R-Type: OR   x9, x1, x3    (x9 = 5 | 15 = 15)
+0002B533 // R-Type: XOR  x10, x5, x0   (x10 = x5 ^ 0)
+0020C5B3 // R-Type: SLL  x11, x1, x2   (Shift Left Logical)
+00025633 // R-Type: SRL  x12, x4, x2   (Shift Right Logical)
+0020E733 // R-Type: SLT  x14, x1, x2   (Set Less Than: 5 < 10? Yes, x14=1)
+0020F7B3 // R-Type: SLTU x15, x1, x2   (Set Less Than Unsigned)
+
+00A0A813 // I-Type: ORI  x16, x21, 10
+00A0B893 // I-Type: XORI x17, x21, 10
+0010C913 // I-Type: SLLI x18, x21, 1
+0020E993 // I-Type: SLTI x19, x21, 2
+0070FA13 // I-Type: ORI  x20, x21, 7
+00109A93 // I-Type: SLLI x21, x21, 1
+00125B13 // I-Type: SRLI x22, x4, 1
+
+06400F93 // I-Type: ADDI x31, x0, 100  (Base address for memory = 100)
+006FA023 // S-Type: SW   x6, 0(x31)    (Store Word x6 at Mem[100])
+007F9223 // S-Type: SH   x7, 4(x31)    (Store Halfword x7 at Mem[104])
+008F8423 // S-Type: SB   x8, 8(x31)    (Store Byte x8 at Mem[108])
+
+000FAC03 // I-Type: LW   x24, 0(x31)   (Load Word from Mem[100])
+004F9C83 // I-Type: LH   x25, 4(x31)   (Load Halfword from Mem[104])
+004FDD03 // I-Type: LBU  x26, 4(x31)   (Load Byte Unsigned)
+008F8D83 // I-Type: LB   x27, 8(x31)   (Load Byte Signed)
+008FCE03 // I-Type: LBU  x28, 8(x31)   (Load Byte Unsigned)
+
+00108463 // B-Type: BEQ  x1, x1, 8     (If 5==5, skip next instruction)
+06F00E93 // FAIL FLAG: ADDI x29, x0, 111
+00209463 // B-Type: BNE  x1, x2, 8     (If 5!=10, skip next instruction)
+0DE00F13 // FAIL FLAG: ADDI x30, x0, 222
+0020C463 // B-Type: BLT  x1, x2, 8     (If 5 < 10, skip next instruction)
+14D00F13 // FAIL FLAG: ADDI x31, x0, 333
+00115463 // B-Type: BGE  x2, x1, 8     (If 10 >= 5, skip next instruction)
+1BC00F13 // FAIL FLAG: ADDI x31, x0, 444
+0020E463 // B-Type: BLTU x1, x2, 8     (Unsigned skip)
+22B00F13 // FAIL FLAG: ADDI x31, x0, 555
+00117463 // B-Type: BGEU x2, x1, 8     (Unsigned skip)
+29A00F13 // FAIL FLAG: ADDI x31, x0, 666
+
+0080056F // J-Type: JAL  x10, 8        (Jump over next instruction, save PC in x10)
+3E700593 // FAIL FLAG: ADDI x11, x0, 999
+04000613 // I-Type: ADDI x12, x0, 64   (Set jump target address)
+000606E7 // I-Type: JALR x13, x12, 0   (Jump to address in x12)
+30900713 // FAIL FLAG: ADDI x14, x0, 777
