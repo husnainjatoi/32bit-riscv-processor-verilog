@@ -1,4 +1,7 @@
 # RV32I Single-Cycle Processor
+[![Verilog](https://img.shields.io/badge/HDL-Verilog-blue)]()
+[![Status](https://img.shields.io/badge/status-active-success)]()
+[![License](https://img.shields.io/badge/license-MIT-green)]()
 
 A 32-bit single-cycle RISC-V (RV32I) processor implemented in Verilog HDL as part of the Computer Organization & Assembly Language (COAL) course at GIK Institute.
 
